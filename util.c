@@ -16,6 +16,7 @@ int main(void)
 	if(strcmp(a,"clear")==0)
 		system("clear");
 
+
 	else if(strcmp(a,"save")==0)
 	{
 		sv=fopen("save","w");
