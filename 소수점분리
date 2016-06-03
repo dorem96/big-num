@@ -1,0 +1,41 @@
+#include <stdio.h>
+int main()
+{
+  char str[10000];
+  char a[60][60];
+  int i=0, j=0, k, l, p=0, q=49, r=51;
+  
+  scanf("%s", str);
+  
+  for(;i < 10000;i++)
+  {
+    if(str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/')
+    {
+      a[++p][0] = str[i];
+      p++;
+      q=0;
+    }
+    else if(str[i] == '.')
+    {
+      a[p][50] = str[i];
+      
+      for(q = 49;j < i;j++)
+      {
+        a[p][q] = str[j];
+        q--;
+      }
+      for(l = i+1, r = 51;str[l] >= '0' && str[l] <= '9';l++)
+      {
+        a[p][r] = str[l];
+        r++;
+      }
+      
+      j = l+1;
+      i = l-1;
+    }
+    else if(str[i] >= '0' && str[i] <= '9')
+    {
+    }
+  }
+  return 0;
+}
