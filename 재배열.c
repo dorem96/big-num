@@ -28,6 +28,9 @@ int main()
   {
     if(p%2 == 0 && p == 0)
     {
+      char b[60] = {0};
+      x = 49;
+      
       for(q = 0;q < 60;q++)
       {
         if(a[p][q] == '.')
@@ -61,6 +64,8 @@ int main()
           }
         }
       }
+      for(int m = 0;m < 60;m++)
+        a[p][m] = b[m];
     }
     else
       continue;
