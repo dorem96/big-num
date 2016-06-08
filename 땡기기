@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <string.h>
+void move_row(int);
+void move_row(int n)
+{
+int i;
+
+for ( i = n; a[n][0]!='\0'; i++)
+{
+strcpy(a[n], a[n+3]);
+}
+}
