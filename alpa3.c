@@ -15,11 +15,14 @@ void input()
 			continue;
 		if(str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/') 
 		{ 
-			a[++p][0] = str[i]; 
-			p++; 
-			q = 1; 
 			if((str[i]=='-')&&(str[i-1] == '+' || str[i-1] == '-' || str[i-1] == '*' || str[i-1] == '/' || i==0)) 
-				p--;
+				a[p][0]='-';
+			else
+			{
+				a[++p][0] = str[i]; 
+				p++; 
+			}
+			q = 1; 
 		} 
 		else 
 		{ 
@@ -115,7 +118,7 @@ char plus(char a1[], char b1[])
 			}
 		}
 	}
-	
+
 }
 
 void minus(char a1[], char b1[])
