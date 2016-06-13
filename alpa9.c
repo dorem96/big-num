@@ -1,11 +1,12 @@
 #include <stdio.h> 
+#include <stdlib.h>
 void cal(char, int);
 char str[10000]={}; 
 char a[1000][62] = {}; 
 char waste[62]={};
 int g=0, n=0;
 int first=0, second=0;
-char iv[2]={};
+char iv[5]={};
 char v[10][64]={};
 char vn=0;
 
@@ -16,6 +17,9 @@ void input()
 	iv[0]=0;
 	iv[1]=0;
 
+	iv[2]=0;
+	iv[3]=0;
+	iv[4]=0;
 	gets(str); 
 
 	for(;i < 10000;i++) 
@@ -392,10 +396,44 @@ void lv(int u, char b1[10][64])
 {
 	for(int i=0;i<64;i++)
 		printf("%c", b1[u][i]);
-	printf("*\n");
+	printf("\n");
 }
 
 
+void sf()
+{
+	FILE *ss;
+
+	ss=fopen("savefile", "w");
+
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<64;j++)
+			fprintf(ss, "%c", v[i][j]);
+		fprintf(ss, "\n");
+	}
+	fclose(ss);
+}
+
+void sl()
+{
+	FILE *ll;
+
+	ll=fopen("savefile", "r");
+
+	for(int i=0;i<10;i++)
+	{
+		fscanf(ll, "%s", v[i]);
+		n++;
+		if(v[i][0]==0)
+		{		
+			n--;
+			break;
+		}
+	}
+
+	fclose(ll);
+}
 
 int main()
 {
@@ -413,12 +451,24 @@ int main()
 	{
 		if(iv[1]=='=')
 			sv(a, v, iv);
-		else if(iv[1]!='=')
+		else if(iv[1]==0)
 		{
 			for(int i=0;i<10;i++)
 				if(v[i][0]==iv[0])
 					lv(i, v);
 		}
+		else if(iv[0]=='v' && iv[1]=='a' && iv[2]=='r')
+			for(int i=0;i<n;i++)
+				lv(i, v);
+		else if(iv[0]=='e' && iv[1]=='n' && iv[2]=='d')
+			exit(-1);
+		else if(iv[0]=='c' && iv[1] == 'l' && iv[2] == 'e' && iv[3] == 'a' && iv[4] == 'r')
+			system("clear");
+		else if(iv[0]=='s' && iv[1] == 'a' && iv[2] == 'v' && iv[3] == 'e')
+			sf();
+		else if(iv[0]=='l' && iv[1] == 'o' && iv[2] == 'a' && iv[3] == 'd')
+			sl();
+
 	}
 
 	for(int i=0;i<10000;i++)
